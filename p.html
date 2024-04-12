@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en" class="text-xs md:text-xs lg:text-sm xl:text-base 2xl:text-lg">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+ <link rel="stylesheet" href="./style.css">
+  <!-- ion icon pack -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <!-- Tailwind CSS Links -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+
+          spacing: {
+
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./styles/style.css">
+
+  <title>Paytm Clone</title>
+</head>
+
+<body style="font-family: 'Inter', sans-serif;" class="text-black bg-[#F0FBFF] ">
+
+  <!-- *************************** -->
+  <!-- Header Section -->
+  <!-- *************************** -->
+
+  <header class="shadow-lg relative bg-white">
+    <div class="flex justify-between items-center max-w-screen-2xl mx-auto h-24 px-4">
+      <div>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZYAAAB8CAMAAAB9jmb0AAABO1BMVEX///8AAAAVK3UAvfL0eSAAjEQAuvFdXV0AIXGHh4f8/PzIyMgAufERKHQiNnwyMjLn6vFAy/RizPUAwvcYLX+2vNQAFG0ZMoIAH3ud4fnq6uobGxtsd6LX8/wlY6IswfPE7fwAAGgAGW6KkK+fpsHc3eYACmsBInE/T4r19fUAiDvGytpNWo4+Pj5oaGj0cgDc3Nxz1fd8fHwqKiqVlZWLi4tRUVHZ2dm5ubldapv82saqqqoQEBBxcXGi4/m06PvefiawsLAziz/0fSjN0N3p+P6H3PjM7vw1RoaVnbyt2cLr9vHAwMD1i0LB4dAAgCaCvpv4p3YgmVj96dr6w6VesYVoiDp2gKhHR0f4sIWqr8X3nF/83cr1iTxdijw0nGBNp3PRgCm7gi2Sxqf4rH3mrn0AVpy7zuL+8usrmN+0AAAKUElEQVR4nO2ba0PbRhaGhW2MERbYblGLMQs22MJgMCZgcOLgUi6BBtI2TUtCt9vudrfl//+C1Vw1I49GEpaSNjnPh4RhLsjz+sw5Z2ZkGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8BZvvoYL/9oZ/ib8xauWwmPujhzpTLfuLjfjIsFfPFk8RHfTaF2Ut84E+EUT6bzS8lP+4MluVt8gN/Elxks+nIskfM5TT5kT8BzHI+JVmMAyzLELx+fMxKPi1rMYw+1mU2jaE/asy1VaxKNp+8y3epPvmYvX5pe1GmWZLqmyJi1TltT5eREi1u49La6KS3WswS8r3RaLSGomTz5BKzdOG6nbXLSqVy+YJGzytLvUqld3IR/cn3lpEs/cd/9ERoExIe1ezUbZlWprPo1W/UWx72fOe+xCto83kyzlWLlOvXBo6K8/ksxy3ki2gl6xUpZWNpFTXJF/OrI7dipZJFHfLFbC9QmL3+jMQuMRf3p/7ceOs2bRWS2+zTsaruz9XdmcgcUCFmF3YQT6q49JT88pvQaQ+jNG9lfFhOq8PNYr0gV9nz96RiwCps3Nas02Kh5pZ6gibcZNzfl1lptVz0aioXS1neIZ8dBTwqcfJKquOt52iV3vm0aStsc0fBf2CcXTLAAikNSekM62JuvYw6/UEoZEFzO890kWVByrSucUVtIlnkqlWpWAzQZTd4jhStD2mVwpAEbmirA7FLNPBXgSlJbPKhe4v+e/Xtd7E0UKCWJVPo0PoxWTKZFnYfCcrip7iietJq8Aw9H29tkkBtallhSAKzdIQjVOjHl4XuNkwd49GedrvIXL7bmp7UXAJkydjEdatksa6Ql05RlnxZ9aTtmznMMXYpz9CP2OfPzt0opp6JuKv99CZdgxbahlZ3BTvYuczQEvE033dzyFxeT29Nai5BsjjUXBSyEHNJUZZs8YXmiat8Hva8b+0Yp3S+nmk/vSTecSxZsIVWl0mBbgLlcjnXXF5+Oz09qbkEyWJZJHBVyVJYN9KVBbcNAq8bfW8e1a2e09nTpzXSGvR8Kg43qAuLK7BrMn7ourrcGt9sTU9sLkGyZApNXH9nWwzZktKUJatcxSjY88/yn9QBcJsEz1M7+jMFFkUg8dr9hSgMaRdspJJrMt50sbn86Moyqbl4slgo62jwuW8Q59LsbDIavCVyLlpZlnBy4kmCSpeGJIv7G1E7N2sRyp8FP3AbuwMcXxEno2xFdzJDTmTMKXENMqPQprKQLHaHDkDEv80hbl8jVbZ+jK6BAi6LdYVS9OuGTxaBc0dc4LSyuFn+aLTkGYpbXEO/9mQpr7gpvyCLm/dfVPIhsqC1xnMoR963dgyW4+jD42i5jbLLoWF44pNI0OxiWXI/TWNdJjIXT5ZNXL4rBMpiblqRZUGscFn4npgnC46BL5kOxJlcrGpl2XuLfABOLrCLJlOv/lg0Qhrqw2Mm3pG2lcSh2IUFCcRin1JZvpqe3Fz8sqwHy1LKPFYWvoPsZfm4uFaUW2hlwXO4T7zBcGdmR/yi+mHJ+4z+w9MxnkTf0TLf0i5Yb+aaiPjvqCxJmEsEWc7v1zFX3Ld8AFnYfPhRuxYpeQ8kongiUkTN4ooF4lrOqCpJmEuYLOa6YzcwBR6KfRBrCdgRUwfA+9paxiltFeOI85nYhe28YD9DwuOkzCVElqbVGA+gZVkaeAlIXRbzCVOCzTlG+aHaYvIeDBsohmuR0iF52+2NJ8vk5qKX5byuymp8shD9Wmn7FuJfF9wJqR70h8M+TrDVroUtNepaDm21g34256Jww7J6vGyxPTSyhv2cyyVnLn5Zao4w221LmWvKsmQady68ZWqy0FngzmQn2LWwBe9Y+9Gl3V/NqYEC3KVKUxjqmrqCLBObi5C3bLjcNfhku7J4pXFZhF2ZggvXLz1Z6DRWxZI6AJYjpCCk3EZzaqAAd5F3Xv4pyjKxuQhZPvbrfK4b54ap8CtclntbWZeiLHRhp19OvKYNlXsr0tlWMDS2w1v/bM8xGuS0gPkZX3iciLno9sS2W+oqLEtTbUlpykJdBt4kJF9vtfOQMvFA2M5L/INJ8s0wWdZDvhq/5CS+xrK8fqy5BO8gG8YGn3mrYdu249WhJ9l0lB1TlIUuOyRNwMGW2rVImXggUoo+OxUH7LPkbbcHyVhy/5pMlUBZCgNBFitzvb29OJD2xIxt9SqWpiw0f0OLuca1mNGSdzE8NmMdTBIh/AeTgihnRJVfE4jEfKDTSS5LYwN/XGlPDO35v29ZaAKI0hHyXVe6lmgHkwaNo7DtxTmYHNKtA9/BpKjK15OqEiRLwzUWTxab3FBi5sKOyGq2om+qsqAgeYjvAs0ET7yUiQci5TantDAbnrnMUQtlQQKNQM48Vb4iqvyWyJ6YrEoHTXyYLMbGvO34z8jSlWVuapZMy+Fzlxtlm3gHkzdiF31E7XsSgnAwKQVhv0UfSoHqnljBruF5D5XFaG90ruYRmcb7kcUInziTrk4hL1mIW/9sz/FtjPejFAeTiW3rS3lLgWBd1c5JXbgs6COVMPz8LGVZwpGvbgVCW+Gdl2hnmTIs6yGu5Zap8m+iSmI3X6xNdtGYBzCRZGEU/iqyxDuYPIjeRUI+mHxIWBVPFqc2VueXpTMmi3fGvfiXsZZo9/ak3d9oZ5kSLEiQDia7/yGq/P74p6dwWQoaWZxB012n7qVjMANdv+Bsvi/fEkrEsy0aRy2L4XGM4zDfttt/u8mqEk2WjNNwHIeXmCyDhjV+W6lwx7onJItZCUe47seS94N2VcOeqES0s0wJX5CAd166/yOqTH5fXy/LYsBuJJdFtf1i87cwEpJl5F1sCqIovHzBkvdlLey216nYJcYbTCyuIHdmcHjcfYfu7SWjilaWkm6r0lDLYjn8HYyEZLkcvwroZ9VrbcbaCib39qKdZUqMH0x23xjo3t7Wq+iDaNDJ4r3DEl0WYZiEZCl/Fsql13ovUAEVC6hLxLNMCbaHRpT8GatiTCemil6Wc7W5aGSxnCbvnYwspT/+EcYff3rN450yHopd9GeZEvK228MZuhFuvHKNJSFV9LIY1/WxiUdzPx8ki2Xfe52TkWXR/jyMurD6POKUMdpZpoQcJNDXWn6f/LUWjl4W47qlWKjsdVI5JosjqpKQLHeFL0L4/Er4o/tBCqjAh5sRzzIl5CDhHVbF+PXxxytjtOdR7OtiK2Uxzgd1ek+MUx/QbLLm3ea3LKfQaHWaYtcV5quLnix5QpHI8qLIyidytSDLF1+GUV8X/misY0a8bEU7y5Qnjd3bI2b6yw/o35fJ2YrL4mBQcxkMmgENSvRSJYdHwMJt/s3Nzt2Gf4QeMw0ev16wRGMNF81LWuwRoVd643nIYjjSG+tHh7MROSSr1jEp7ccIj9sHBOKNHrAqxqskVZkM4Q0DTfX7fioAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADD/By8OgJX0fOGYAAAAAElFTkSuQmCC" alt="paytm logo" class="w-[11.25rem]">
+      </div>
+      <nav class="">
+        <ul class="lg:flex gap-8 font-bold text-[1.0625rem] hidden">
+          <li><a href="#" class="hover:bg-gray-100 p-3 rounded transition-all">Paytm for Consumer</a></li>
+          <li><a href="#" class="hover:bg-gray-100 p-3 rounded transition-all">Paytm For Business</a></li>
+          <li><a href="#" class="hover:bg-gray-100 p-3 rounded transition-all">Company</a></li>
+          <li><a href="#" class="hover:bg-gray-100 p-3 rounded transition-all">Investor Relations</a></li>
+          <li><a href="#" class="hover:bg-gray-100 p-3 rounded transition-all">Career</a></li>
+        </ul>
+      </nav>
+      <div
+        class="sign-in-btn bg-sky-500 text-white font-bold text-sm p-0.5 pl-5 rounded-full hover:bg-[#012970] cursor-pointer transition-all">
+        <div class=" flex items-center gap-2">
+          <span>Sign In</span>
+          <img src="data:image/png;base64,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" alt="user icon" class="user-icon-md" height="20" width="20"
+          ">
+          <img src="./images/user-icon-blue.svg" alt="user icon" class="user-icon-blue">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- *************************** -->
+  <!-- Main -->
+  <!-- *************************** -->
+
+  <main class="bg-white">
+
+    <!-- *************************** -->
+    <!-- Notification Section -->
+    <!-- *************************** -->
+
+    <section class="text-center sm:flex justify-center items-center gap-1 py-3 bg-gray-100">
+      <span class="font-semibold">No Wallet KYC Required</span>
+      <span class="text-2xl">&#128522;</span>
+      <span class="font-medium">to pay using UPI on Paytm.</span>
+      <span><a href="#" class="font-semibold">Learn more.</a></span>
+    </section>
+
+    <!-- *************************** -->
+    <!-- Hero Section -->
+    <!-- *************************** -->
+
+    <section class="mt-32">
+      <div class="flex flex-col-reverse items-center sm:flex-row sm:justify-between max-w-screen-2xl mx-auto px-4">
+        <!-- hero left side -->
+        <div class="flex flex-col	gap-12 max-w-2xl pt-10 sm:pt-0">
+          <div><img src="data:image/png;base64,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" alt="paytm upi img" class="w-[5rem] shadow-md	rounded-xl" height="30" width="30">
+          </div>
+          <div class="flex flex-col text-center sm:text-start">
+            <h1 class="text-[3.375rem] font-bold leading-tight	">India's Most-loved Payments App</h1>
+            <p class="text-xl	mb-10 mt-2 max-w-[29.6875rem] self-center sm:self-start">
+              Recharge & pay bills, book flights & movie tickets, open a savings account, invest in stocks & mutual
+              funds, and do a lot more.
+            </p>
+            <div class="flex justify-center sm:block">
+              <button href="#"
+                class="download-paytm-app-btn flex bg-black text-white font-medium items-center gap-2 px-7 py-3 rounded-full border border-black hover:bg-white hover:text-black transition-all">
+                Download Paytm App
+                <span>
+                  <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="apple-logo-svg-w">
+                    <path
+                      d="M11.6593 15.3557C10.7589 16.1979 9.76546 16.0666 8.81854 15.6695C7.81182 15.2644 6.89149 15.2388 5.82828 15.6695C4.50426 16.2203 3.80155 16.0602 3.00415 15.3557C-1.49786 10.8883 -0.833353 4.08311 4.28331 3.82691C5.52427 3.89096 6.39311 4.48821 7.12406 4.53785C8.21052 4.32489 9.25047 3.71483 10.4133 3.79489C11.8105 3.90377 12.8554 4.43538 13.5531 5.3913C10.6791 7.05657 11.3603 10.7073 14 11.7321C13.4717 13.0691 12.7939 14.3902 11.6576 15.3669L11.6593 15.3557ZM7.02439 3.77888C6.88982 1.79336 8.55939 0.160122 10.4798 0C10.7439 2.28974 8.32017 4.00305 7.02439 3.77888Z"
+                      fill="white"></path>
+                  </svg>
+                  <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="apple-logo-svg-b">
+                    <path
+                      d="M11.6593 15.3557C10.7589 16.1979 9.76546 16.0666 8.81854 15.6695C7.81182 15.2644 6.89149 15.2388 5.82828 15.6695C4.50426 16.2203 3.80155 16.0602 3.00415 15.3557C-1.49786 10.8883 -0.833353 4.08311 4.28331 3.82691C5.52427 3.89096 6.39311 4.48821 7.12406 4.53785C8.21052 4.32489 9.25047 3.71483 10.4133 3.79489C11.8105 3.90377 12.8554 4.43538 13.5531 5.3913C10.6791 7.05657 11.3603 10.7073 14 11.7321C13.4717 13.0691 12.7939 14.3902 11.6576 15.3669L11.6593 15.3557ZM7.02439 3.77888C6.88982 1.79336 8.55939 0.160122 10.4798 0C10.7439 2.28974 8.32017 4.00305 7.02439 3.77888Z"
+                      fill="black"></path>
+                  </svg>
+                </span>
+                <span>
+                  <svg class="android-logo-svg-w" width="14" height="16" viewBox="0 0 14 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M0.088012 0.571735C0.0310801 0.726729 0 0.910797 0 1.121V14.8786C0 15.0894 0.0311427 15.2736 0.0881839 15.4286L7.32808 7.9997L0.088012 0.571735ZM0.590122 15.9564C0.85223 16.0466 1.18264 15.9995 1.54068 15.7912L10.0736 10.8165L7.83627 8.52109L0.590122 15.9564ZM10.7221 10.4391L13.3647 8.8987C14.2118 8.40415 14.2118 7.59609 13.3647 7.10217L10.7211 5.561L8.34443 7.99966L10.7221 10.4391ZM10.073 5.18317L1.54068 0.209061C1.18252 0.000250885 0.852017 -0.0466058 0.589868 0.0438429L7.83624 7.47828L10.073 5.18317Z"
+                      fill="#fff"></path>
+                  </svg>
+                  <svg class="android-logo-svg-b" width="14" height="16" viewBox="0 0 14 16" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M0.088012 0.571735C0.0310801 0.726729 0 0.910797 0 1.121V14.8786C0 15.0894 0.0311427 15.2736 0.0881839 15.4286L7.32808 7.9997L0.088012 0.571735ZM0.590122 15.9564C0.85223 16.0466 1.18264 15.9995 1.54068 15.7912L10.0736 10.8165L7.83627 8.52109L0.590122 15.9564ZM10.7221 10.4391L13.3647 8.8987C14.2118 8.40415 14.2118 7.59609 13.3647 7.10217L10.7211 5.561L8.34443 7.99966L10.7221 10.4391ZM10.073 5.18317L1.54068 0.209061C1.18252 0.000250885 0.852017 -0.0466058 0.589868 0.0438429L7.83624 7.47828L10.073 5.18317Z"
+                      fill="#000"></path>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- hero right side -->
+        <div class="flex justify-center items-center sm:w-[33rem]">
+          <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTljl57S9yos69_kG8gzxIsMQTryKyCA6KkgE2X9vU43KADFJSy" alt="hero image" height="980" width="980">
+        </div>
+      </div>
+    </section>
+
+    <!-- *************************** -->
+    <!-- Recharge & Pay Bills Section -->
+    <!-- *************************** -->
+
+    <section class="bg-[#00BAF2] mt-20">
+      <div class="max-w-screen-2xl mx-auto py-16 px-4">
+        <h2 class="text-4xl font-bold text-white">Recharge & Pay Bills on Paytm.</h2>
+        <div class="flex flex-wrap justify-start mt-6 text-white">
+          <!-- card 01 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#01AFE3] transition-all duration-500 rounded-lg cursor-pointer">
+            <div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS6RFqoSPrrO0Jv4T2XvOKWtDnJ2irPZZ5u3vJlcBlTFSGqUBb" alt="recharge-prepaid-mobile" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span>Recharge</span>
+              <span class="font-semibold flex items-center gap-1">
+                Prepaid Mobile
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 02 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#01AFE3] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/pay-rent.png" alt="pay-rent" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span>Pay</span>
+              <span class="font-semibold flex items-center gap-1">
+                Rent Payment
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 03 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#01AFE3] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/pay-electricity-bill.png" alt="pay-electricity-bill" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span>Pay</span>
+              <span class="font-semibold flex items-center gap-1">
+                Electricity Bill
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 04 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#01AFE3] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/recharge-dth.png" alt="recharge-dth" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span>Recharge</span>
+              <span class="font-semibold flex items-center gap-1">
+                DTH Connection
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 05 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#01AFE3] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/book-gas-cylinder.png" alt="book-gas-cylinder" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span>Book</span>
+              <span class="font-semibold flex items-center gap-1">
+                Gas Cylinder
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 06 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#01AFE3] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/pay-credit-card.png" alt="pay-credit-card" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span>Pay</span>
+              <span class="font-semibold flex items-center gap-1">
+                Credit Card Bill
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 07 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#01AFE3] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/all-payment-services.png" alt="all-payment-services" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span>All</span>
+              <span class="font-semibold flex items-center gap-1">
+                Payment Services
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- *************************** -->
+    <!-- Book & Buy on Paytm Section -->
+    <!-- *************************** -->
+
+    <section class="bg-[#0F4A8A]">
+      <div class="max-w-screen-2xl mx-auto py-16 px-4">
+        <h2 class="text-4xl font-bold text-white">Book & Buy on Paytm.</h2>
+        <div class="flex flex-wrap justify-start mt-6 text-white">
+          <!-- card 01 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#0C3E80] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/movie-tickets.png" alt="movie-tickets" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span class="font-semibold flex items-center gap-1">
+                Movie Tickets
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 02 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#0C3E80] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/flight-tickets.png" alt="flight-tickets" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span class="font-semibold flex items-center gap-1">
+                Flight Tickets
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 03 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#0C3E80] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/bus-tickets.png" alt="bus-tickets" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span class="font-semibold flex items-center gap-1">
+                Bus Tickets
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 04 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#0C3E80] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/tain-tickets.png" alt="train tickets" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span class="font-semibold flex items-center gap-1">
+                Train Tickets
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 05 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#0C3E80] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/car-and-bikes.png" alt="car-and-bikes" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span class="font-semibold flex items-center gap-1">
+                Card & Bikes
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 06 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#0C3E80] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/international-flights.png" alt="international-flights" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span class="font-semibold flex items-center gap-1">
+                International Flights
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+          <!-- card 07 -->
+          <div
+            class="py-4 pl-4 pr-3 mr-4 min-w-fit hover:bg-[#0C3E80] transition-all duration-500 rounded-lg cursor-pointer transition-all">
+            <div><img src="./New folder/invest-in-stocks-2.png" alt="invest-in-stocks" class="w-16"></div>
+            <div class="flex flex-col mt-4">
+              <span class="font-semibold flex items-center gap-1">
+                Invest in Stocks
+                <ion-icon name="chevron-forward"></ion-icon>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- *************************** -->
+    <!-- Paytm Payment Instruments Section -->
+    <!-- *************************** -->
+
+    <section class="bg-[#F5F7FA]">
+      <div class="max-w-screen-xl mx-auto pt-32 px-4">
+        <h1 class="text-5xl font-bold">Paytm Payment Instruments</h1>
+
+        <!-- Feature 01 -->
+        <div
+          class="flex flex-col-reverse sm:flex-row bg-white gap-12 p-12 sm:gap-0 sm:flex-row sm:py-20 sm:pl-28 sm:pr-12 mt-12 rounded-xl">
+          <!-- left side -->
+          <div class="">
+            <div>
+              <div class="flex items-center gap-4 font-bold">
+                <img src="./New folder/paytm-wallet.png" alt="paytm-wallet" class="w-24">
+                <p>Paytm <br> Wallet</p>
+              </div>
+              <h2 class="text-4xl	font-bold mt-12">The Fastest Way to Pay In-store & Online.</h2>
+              <p class="font-medium text-lg my-6">
+                Load up your Paytm Wallet for free and make payments in a jiffy at over 21 million stores, websites and
+                apps.
+              </p>
+              <div class="">
+                <button href="#"
+                  class="download-paytm-app-btn flex bg-black text-white font-medium items-center gap-2 px-7 py-3 rounded-full border border-black hover:bg-white hover:text-black transition-all">
+                  Download Paytm App
+                  <span>
+                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      class="apple-logo-svg-w">
+                      <path
+                        d="M11.6593 15.3557C10.7589 16.1979 9.76546 16.0666 8.81854 15.6695C7.81182 15.2644 6.89149 15.2388 5.82828 15.6695C4.50426 16.2203 3.80155 16.0602 3.00415 15.3557C-1.49786 10.8883 -0.833353 4.08311 4.28331 3.82691C5.52427 3.89096 6.39311 4.48821 7.12406 4.53785C8.21052 4.32489 9.25047 3.71483 10.4133 3.79489C11.8105 3.90377 12.8554 4.43538 13.5531 5.3913C10.6791 7.05657 11.3603 10.7073 14 11.7321C13.4717 13.0691 12.7939 14.3902 11.6576 15.3669L11.6593 15.3557ZM7.02439 3.77888C6.88982 1.79336 8.55939 0.160122 10.4798 0C10.7439 2.28974 8.32017 4.00305 7.02439 3.77888Z"
+                        fill="white"></path>
+                    </svg>
+                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      class="apple-logo-svg-b">
+                      <path
+                        d="M11.6593 15.3557C10.7589 16.1979 9.76546 16.0666 8.81854 15.6695C7.81182 15.2644 6.89149 15.2388 5.82828 15.6695C4.50426 16.2203 3.80155 16.0602 3.00415 15.3557C-1.49786 10.8883 -0.833353 4.08311 4.28331 3.82691C5.52427 3.89096 6.39311 4.48821 7.12406 4.53785C8.21052 4.32489 9.25047 3.71483 10.4133 3.79489C11.8105 3.90377 12.8554 4.43538 13.5531 5.3913C10.6791 7.05657 11.3603 10.7073 14 11.7321C13.4717 13.0691 12.7939 14.3902 11.6576 15.3669L11.6593 15.3557ZM7.02439 3.77888C6.88982 1.79336 8.55939 0.160122 10.4798 0C10.7439 2.28974 8.32017 4.00305 7.02439 3.77888Z"
+                        fill="black"></path>
+                    </svg>
+                  </span>
+                  <span>
+                    <svg class="android-logo-svg-w" width="14" height="16" viewBox="0 0 14 16" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.088012 0.571735C0.0310801 0.726729 0 0.910797 0 1.121V14.8786C0 15.0894 0.0311427 15.2736 0.0881839 15.4286L7.32808 7.9997L0.088012 0.571735ZM0.590122 15.9564C0.85223 16.0466 1.18264 15.9995 1.54068 15.7912L10.0736 10.8165L7.83627 8.52109L0.590122 15.9564ZM10.7221 10.4391L13.3647 8.8987C14.2118 8.40415 14.2118 7.59609 13.3647 7.10217L10.7211 5.561L8.34443 7.99966L10.7221 10.4391ZM10.073 5.18317L1.54068 0.209061C1.18252 0.000250885 0.852017 -0.0466058 0.589868 0.0438429L7.83624 7.47828L10.073 5.18317Z"
+                        fill="#fff"></path>
+                    </svg>
+                    <svg class="android-logo-svg-b" width="14" height="16" viewBox="0 0 14 16" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.088012 0.571735C0.0310801 0.726729 0 0.910797 0 1.121V14.8786C0 15.0894 0.0311427 15.2736 0.0881839 15.4286L7.32808 7.9997L0.088012 0.571735ZM0.590122 15.9564C0.85223 16.0466 1.18264 15.9995 1.54068 15.7912L10.0736 10.8165L7.83627 8.52109L0.590122 15.9564ZM10.7221 10.4391L13.3647 8.8987C14.2118 8.40415 14.2118 7.59609 13.3647 7.10217L10.7211 5.561L8.34443 7.99966L10.7221 10.4391ZM10.073 5.18317L1.54068 0.209061C1.18252 0.000250885 0.852017 -0.0466058 0.589868 0.0438429L7.83624 7.47828L10.073 5.18317Z"
+                        fill="#000"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+          <!-- right side -->
+          <div class="flex justify-center items-center">
+            <img src="./New folder/feature-img-paytm-wallet.png" alt="feature-img-paytm-wallet">
+          </div>
+        </div>
+
+        <!-- Feature 02 -->
+        <div class="flex flex-col-reverse sm:flex-row gap-12 p-12 bg-white sm:py-20 sm:pl-28 sm:pr-12 mt-12 rounded-xl">
+          <!-- left side -->
+          <div>
+            <div>
+              <div class="flex items-center gap-4 font-bold">
+                <img src="./New folder/upi-money-transfer.png" alt="upi-money-transfer" class="w-24">
+                <p>UPI Money <br> Transfer</p>
+              </div>
+              <h2 class="text-4xl	font-bold mt-12">Pay anyone directly from your bank account.</h2>
+              <p class="font-medium text-lg my-6">
+                Pay anyone, everywhere. Make contactless & secure payments in-stores or online using Paytm Wallet or
+                Directly from your Bank Account. Plus, send & receive money from anyone.
+              </p>
+              <div class="">
+                <button href="#"
+                  class="download-paytm-app-btn flex bg-black text-white font-medium items-center gap-2 px-7 py-3 rounded-full border border-black hover:bg-white hover:text-black transition-all">
+                  Download Paytm App
+                  <span>
+                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      class="apple-logo-svg-w">
+                      <path
+                        d="M11.6593 15.3557C10.7589 16.1979 9.76546 16.0666 8.81854 15.6695C7.81182 15.2644 6.89149 15.2388 5.82828 15.6695C4.50426 16.2203 3.80155 16.0602 3.00415 15.3557C-1.49786 10.8883 -0.833353 4.08311 4.28331 3.82691C5.52427 3.89096 6.39311 4.48821 7.12406 4.53785C8.21052 4.32489 9.25047 3.71483 10.4133 3.79489C11.8105 3.90377 12.8554 4.43538 13.5531 5.3913C10.6791 7.05657 11.3603 10.7073 14 11.7321C13.4717 13.0691 12.7939 14.3902 11.6576 15.3669L11.6593 15.3557ZM7.02439 3.77888C6.88982 1.79336 8.55939 0.160122 10.4798 0C10.7439 2.28974 8.32017 4.00305 7.02439 3.77888Z"
+                        fill="white"></path>
+                    </svg>
+                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      class="apple-logo-svg-b">
+                      <path
+                        d="M11.6593 15.3557C10.7589 16.1979 9.76546 16.0666 8.81854 15.6695C7.81182 15.2644 6.89149 15.2388 5.82828 15.6695C4.50426 16.2203 3.80155 16.0602 3.00415 15.3557C-1.49786 10.8883 -0.833353 4.08311 4.28331 3.82691C5.52427 3.89096 6.39311 4.48821 7.12406 4.53785C8.21052 4.32489 9.25047 3.71483 10.4133 3.79489C11.8105 3.90377 12.8554 4.43538 13.5531 5.3913C10.6791 7.05657 11.3603 10.7073 14 11.7321C13.4717 13.0691 12.7939 14.3902 11.6576 15.3669L11.6593 15.3557ZM7.02439 3.77888C6.88982 1.79336 8.55939 0.160122 10.4798 0C10.7439 2.28974 8.32017 4.00305 7.02439 3.77888Z"
+                        fill="black"></path>
+                    </svg>
+                  </span>
+                  <span>
+                    <svg class="android-logo-svg-w" width="14" height="16" viewBox="0 0 14 16" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.088012 0.571735C0.0310801 0.726729 0 0.910797 0 1.121V14.8786C0 15.0894 0.0311427 15.2736 0.0881839 15.4286L7.32808 7.9997L0.088012 0.571735ZM0.590122 15.9564C0.85223 16.0466 1.18264 15.9995 1.54068 15.7912L10.0736 10.8165L7.83627 8.52109L0.590122 15.9564ZM10.7221 10.4391L13.3647 8.8987C14.2118 8.40415 14.2118 7.59609 13.3647 7.10217L10.7211 5.561L8.34443 7.99966L10.7221 10.4391ZM10.073 5.18317L1.54068 0.209061C1.18252 0.000250885 0.852017 -0.0466058 0.589868 0.0438429L7.83624 7.47828L10.073 5.18317Z"
+                        fill="#fff"></path>
+                    </svg>
+                    <svg class="android-logo-svg-b" width="14" height="16" viewBox="0 0 14 16" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M0.088012 0.571735C0.0310801 0.726729 0 0.910797 0 1.121V14.8786C0 15.0894 0.0311427 15.2736 0.0881839 15.4286L7.32808 7.9997L0.088012 0.571735ZM0.590122 15.9564C0.85223 16.0466 1.18264 15.9995 1.54068 15.7912L10.0736 10.8165L7.83627 8.52109L0.590122 15.9564ZM10.7221 10.4391L13.3647 8.8987C14.2118 8.40415 14.2118 7.59609 13.3647 7.10217L10.7211 5.561L8.34443 7.99966L10.7221 10.4391ZM10.073 5.18317L1.54068 0.209061C1.18252 0.000250885 0.852017 -0.0466058 0.589868 0.0438429L7.83624 7.47828L10.073 5.18317Z"
+                        fill="#000"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+          <!-- right side -->
+          <div class="flex justify-center items-center">
+            <img src="./New folder/feature-img-upi-money-transfer.png" alt="feature-img-upi-money-transfer">
+          </div>
+        </div>
+
+        <!-- Feature 03 -->
+        <div class="flex flex-col-reverse sm:flex-row gap-12 p-12 bg-white sm:py-20 sm:pl-28 sm:pr-12 mt-12 rounded-xl">
+          <!-- left side -->
+          <div>
+            <div>
+              <div class="flex items-center gap-4 font-bold">
+                <img src="./New folder/paytm-postpaid.png" alt="paytm-postpaid" class="w-24">
+              </div>
+              <h2 class="text-4xl	font-bold mt-12">Want it? <br> No more waiting for it.</h2>
+              <p class="font-medium text-lg my-6">
+                With Paytm Postpaid, your wishlist doesn't have to be on the wait list. Shop for the things you want
+                today and pay for them next month.
+              </p>
+              <div>
+                <button href="#"
+                  class="learn-more-btn relative flex bg-[#002970] text-white font-semibold items-center justify-center gap-2 pr-12 pl-8 py-3 rounded-full hover:bg-[#00baf2]">
+                  Learn More
+                  <span class="arrow"></span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+          <!-- right side -->
+          <div class="flex justify-center items-center">
+            <img src="./New folder/feature-section-paytm-postpaid.png" alt="feature-section-paytm-postpaid">
+          </div>
+        </div>
+
+
+        <!-- credit cards -->
+        <div class="flex justify-center flex-wrap gap-8 mt-12 pb-12">
+          <!-- card 01 -->
+          <div class="pt-[4.375rem] px-12 bg-white rounded-xl max-w-[35rem]">
+            <div class=""><img src="./New folder/hdfc-bank.png" alt="hdfc-bank"></div>
+            <h1 class="text-[2.5rem] font-bold leading-tight mt-12">Unlimited Cashback <span>Every Time</span> </h1>
+            <p class="text-xl	font-medium my-5">
+              Paytm HDFC Bank Select Credit Card. A card with assured Cashback and incredible offers.
+            </p>
+            <div>
+              <img src="./New folder/hdfc-bank-credit-card.png" alt="hdfc-bank-credit-card">
+            </div>
+          </div>
+
+          <!-- card 02 -->
+          <div class="pt-[4.375rem] px-12 bg-white rounded-xl max-w-[35rem]">
+            <div><img src="./New folder/sbi-card.png" alt="sbi-card"></div>
+            <h1 class="text-[2.5rem] font-bold leading-tight mt-12">India’s Most <span>Sincere Credit Card</span> </h1>
+            <p class="text-xl	font-medium my-5">
+              Paytm SBI Card SELECT - With Intelligent Features & Great Rewards that Never Expire
+            </p>
+            <div>
+              <img src="./New folder/sbi-credit-card.png" alt="sbi-credit-card">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- *************************** -->
+    <!-- Financial Services by Paytm Section -->
+    <!-- *************************** -->
+
+    <section>
+      <div class="max-w-screen-xl mx-auto pt-32 px-4">
+        <h1 class="text-5xl font-bold">Financial Services by Paytm</h1>
+
+        <!-- Service 01 : paytm bank -->
+
+        <div class="flex flex-col-reverse items-center pb-10 sm:pb-0 sm:flex-row sm:justify-between mt-12">
+
+          <!-- left section -->
+          <div class="sm:w-[30rem]">
+            <div>
+              <img src="./New folder/paytm-bank.png" alt="paytm-bank" class="w-[13.25rem]">
+            </div>
+            <h2 class="text-[2.5rem] font-bold leading-tight my-12">India's most sincere bank.</h2>
+            <p class="text-xl font-medium mb-12">
+              Paytm Payments Bank offers secure, transparent and risk-free banking at your fingertips. With instant
+              account opening, virtual debit card and zero balance requirements, experience the future of banking today.
+            </p>
+            <div>
+              <button href="#"
+                class="learn-more-btn relative flex bg-[#002970] text-white font-semibold items-center justify-center gap-2 pr-12 pl-8 py-3 rounded-full hover:bg-[#00baf2]">
+                Learn More
+                <span class="arrow"></span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- right section -->
+          <div class="sm:w-[35rem] flex justify-center items-center">
+            <img src="./New folder/service-img-bank.png" alt="service-img-bank" class="w-3/4 sm:w-10/12">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Service 02 : Build Long-term Wealth & Achieve your Goals. -->
+      <div class="bg-image-service-02 bg-[#F5F7FA] py-20">
+        <div class="flex flex-col items-center sm:flex-row sm:justify-between mt-12 max-w-screen-xl mx-auto px-4">
+
+          <!-- left section -->
+          <div class="sm:w-[35rem] flex justify-center items-center">
+            <img src="./New folder/service-img-achieve-goals.png" alt="service-img-achieve-goals" class="w-10/12">
+          </div>
+
+
+          <!-- right section -->
+          <div class="sm:w-[30rem] pt-12 sm:pt-0">
+            <div>
+              <img src="./New folder/paytm-money.png" alt="paytm-bank" class="w-[13.25rem]">
+            </div>
+            <h2 class="text-[2.5rem] font-bold leading-tight my-12">Build Long-term Wealth & Achieve your
+              Goals.</h2>
+            <p class="text-xl font-medium mb-12">
+              Investing on Paytm Money is transparent, low-cost and commission-free. Buy stocks & mutual funds that can
+              help you create wealth & realize your dreams.
+            </p>
+            <div>
+              <button href="#"
+                class="learn-more-btn relative flex bg-[#002970] text-white font-semibold items-center justify-center gap-2 pr-12 pl-8 py-3 rounded-full hover:bg-[#00baf2]">
+                Learn More
+                <span class="arrow"></span>
+              </button>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- Service 03 : Insurance made easy. -->
+      <div class="py-12">
+        <div class="flex flex-col-reverse items-center pb-10 sm:pb-0 sm:flex-row sm:justify-between mt-12 pt-12 px-4">
+
+          <!-- left section -->
+          <div class="sm:w-[30rem] pt-12 sm:pt-0">
+            <div>
+              <img src="./New folder/paytm-bank (1).png" alt="paytm-bank" class="w-[13.25rem]">
+            </div>
+            <h2 class="text-[2.5rem] font-bold leading-tight my-12">Insurance made easy.</h2>
+            <p class="text-xl mb-12">
+              Buying insurance does not have to be tedious, time-consuming & confusing. Paytm Insurance removes the
+              worry of getting insured by making it simple, convenient & easy-to-understand.
+            </p>
+            <div>
+              <button href="#"
+                class="learn-more-btn relative flex bg-[#002970] text-white font-semibold items-center justify-center gap-2 pr-12 pl-8 py-3 rounded-full hover:bg-[#00baf2]">
+                Learn More
+                <span class="arrow"></span>
+              </button>
+            </div>
+
+          </div>
+
+
+          <!-- right section -->
+          <div class="sm:w-[30rem] flex justify-center items-center">
+            <img src="./New folder/service-img-insurance.png" alt="service-img-insurance" class="sm:w-10/12">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Service 04 : Get a Personal Loan in 2 Minutes. -->
+      <div class="bg-[#F5F7FA] py-12">
+        <div class="flex flex-col items-center sm:flex-row sm:justify-between mt-12 max-w-screen-xl mx-auto px-4">
+          <!-- left section -->
+          <div class="sm:w-[30rem] flex justify-center items-center">
+            <img src="./New folder/service-img-personal-loan.png" alt="service-img-personal-loan" class="sm:w-10/12">
+          </div>
+
+
+          <!-- right section -->
+          <div class="sm:w-[30rem] pt-12 sm:pt-0">
+            <div>
+              <img src="./New folder/paytm-bank (2).png" alt="paytm-bank" class="w-[13.25rem]">
+            </div>
+            <h2 class="text-[2.5rem] font-bold leading-tight my-12">Get a Personal Loan in 2 Minutes.</h2>
+            <p class="text-xl mb-12">
+              Paytm offers India's quickest multi-purpose, hassle-free loan. It is 100% digital, transparent and
+              paperless.
+            </p>
+            <div>
+              <button href="#"
+                class="learn-more-btn relative flex bg-[#002970] text-white font-semibold items-center justify-center gap-2 pr-12 pl-8 py-3 rounded-full hover:bg-[#00baf2]">
+                Learn More
+                <span class="arrow"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- *************************** -->
+    <!-- Business Services by Paytm Section -->
+    <!-- *************************** -->
+
+    <section>
+      <div class="max-w-screen-xl mx-auto px-4">
+        <h1 class="text-5xl font-bold pt-32">Business Services by Paytm</h1>
+
+        <!-- Service 01 : Accept payments online with ease -->
+        <div
+          class="mt-8 sm:pl-20 sm:pt-16 sm:pb-20 flex flex-col-reverse sm:flex-row items-center sm:items-stretch py-12 sm:justify-between bg-[#F5F7FA] rounded-lg">
+          <!-- left side -->
+          <div class="px-12 sm:w-[30rem] flex flex-col justify-center">
+            <h2 class="text-4xl font-bold mt-12">Accept payments online with ease</h2>
+            <p class="py-7">
+              Grow your business with the payment gateway that powers India’s largest brands and even the Paytm App
+            </p>
+            <div>
+              <button href="#"
+                class="learn-more-btn relative flex bg-[#002970] text-white font-semibold items-center justify-center gap-2 pr-12 pl-8 py-3 rounded-full hover:bg-[#00baf2]">
+                Learn More
+                <span class="arrow"></span>
+              </button>
+            </div>
+          </div>
+          <!-- right side -->
+          <div class="sm:w-[27rem] flex justify-center">
+            <img src="./New folder/service-img-accept-payments.png" alt="service-img-accept-payments"
+              class="w-8/12 sm:w-full">
+          </div>
+        </div>
+
+        <!-- Service 02 : In-shop payments powered by Paytm. -->
+        <div
+          class="mt-8 sm:pl-20 sm:pt-16 sm:pb-20 flex flex-col-reverse sm:flex-row items-center sm:items-stretch py-12 sm:justify-between bg-[#F5F7FA] rounded-lg">
+          <!-- left side -->
+          <div class="px-12 sm:w-[30rem] flex flex-col justify-center">
+            <h2 class="text-4xl font-bold mt-12">In-shop payments powered by Paytm.</h2>
+            <p class="py-7">
+              Millions of small & big businesses use Paytm to accept payments anywhere any time with a wide range of
+              solutions for all kind of merchants
+            </p>
+            <div>
+              <button href="#"
+                class="learn-more-btn relative flex bg-[#002970] text-white font-semibold items-center justify-center gap-2 pr-12 pl-8 py-3 rounded-full hover:bg-[#00baf2]">
+                Learn More
+                <span class="arrow"></span>
+              </button>
+            </div>
+          </div>
+          <!-- right side -->
+          <div class="sm:w-[27rem] flex justify-center">
+            <img src="./New folder/service-img-in-shop-payments.png" alt="service-img-in-shop-payments"
+              class="w-8/12 sm:w-full">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- *************************** -->
+    <!-- Business Tools Section -->
+    <!-- *************************** -->
+
+    <section>
+      <div class="max-w-screen-xl mx-auto pb-20 px-4">
+        <h1 class="text-[2.5rem] sm:w-[30rem] font-bold pt-32 mb-20 leading-normal">Business Tools to help your business
+          grow</h1>
+
+        <div class="flex justify-center sm:justify-between flex-wrap gap-2">
+
+          <!-- card 01 -->
+          <div class="w-[15rem] py-4">
+            <div class="w-[15rem]">
+              <img src="./New folder/pos-billing-software.png" alt="pos-billing-software" class="w-[22rem]">
+            </div>
+            <h2 class="text-[1.625rem] font-bold pt-10 pb-5 leading-normal">POS Billing <br> Software</h2>
+            <p class="text-xl	font-medium pb-5">
+              Say Hello to Smart Retail <br> Business Management
+            </p>
+            <a href="#" class="font-bold">Learn More</a>
+          </div>
+
+          <!-- card 02 -->
+          <div class="w-[15rem]">
+            <div class="w-[15rem]">
+              <img src="./New folder/paytm-for-business-app.png" alt="paytm-for-business-app">
+            </div>
+            <h2 class="text-[1.625rem] font-bold pt-10 pb-5 leading-normal">Paytm for <br> Business App</h2>
+            <p class="text-xl	font-medium pb-5">
+              Everything you need to manage your business on your phone
+            </p>
+            <a href="#" class="font-bold">Learn More</a>
+          </div>
+
+          <!-- card 03 -->
+          <div class="w-[15rem]">
+            <div class="w-[15rem]">
+              <img src="./New folder/advertise.png" alt="advertise">
+            </div>
+            <h2 class="text-[1.625rem] font-bold pt-10 pb-5 leading-normal">Advertise on <br> Paytm</h2>
+            <p class="text-xl	font-medium pb-5">
+              Grow your business by advertising on India’s largest mobile business
+            </p>
+            <a href="#" class="font-bold">Learn More</a>
+          </div>
+
+          <!-- card 04 -->
+          <div class="w-[15rem]">
+            <div class="w-[15rem]">
+              <img src="./New folder/business-khata.png" alt="business-khata">
+            </div>
+            <h2 class="text-[1.625rem] font-bold pt-10 pb-5 leading-normal">Business <br> Khata</h2>
+            <p class="text-xl	font-medium pb-5">
+              Managing Khata made easy
+            </p>
+            <a href="#" class="font-bold">Learn More</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- *************************** -->
+    <!-- Paytm money and Paytm Travel Section -->
+    <!-- *************************** -->
+
+    <section class="bg-[#F0FBFF] py-16">
+
+      <!-- Paytm Money Section -->
+      <div class="flex justify-between flex-wrap max-w-screen-xl mx-auto sm:py-16 sm:pl-16  bg-white px-4 py-12">
+        <div class="w-[12.5rem] flex flex-col justify-between">
+          <div class="w-[10rem]">
+            <img src="./New folder/paytm-money-2.png" alt="paytm-money-2">
+          </div>
+          <p class="pt-10 font-medium">
+            Get started on wealth creation journey with Zero brokerage fee & no hidden charges.
+          </p>
+          <a href="#" class="pt-5 font-bold text-[#66D6FF] hover:text-[#3fcafd] transition-all">Learn More</a>
+        </div>
+
+        <div class="flex justify-center flex-wrap gap-4 text-white font-bold pt-8 sm:pt:0">
+
+          <!-- Card 01 -->
+          <div class="w-[9.68rem] bg-[#66D6FF] p-1 flex flex-col items-center rounded  cursor-pointer">
+            <div class="w-[9.0625rem] overflow-hidden rounded">
+              <img src="./New folder/invest-in-stocks.png" alt="invest-in-stocks"
+                class="transition-all duration-500 hover:scale-110">
+            </div>
+            <p class="py-4">Invest in Stocks</p>
+          </div>
+
+          <!-- Card 02 -->
+          <div class="w-[9.68rem] bg-[#66D6FF] p-1 flex flex-col items-center rounded cursor-pointer">
+            <div class="w-[9.0625rem] overflow-hidden rounded">
+              <img src="./New folder/apply-for-ipo.png" alt="apply-for-ipo"
+                class="transition-all duration-500 hover:scale-110">
+            </div>
+            <p class=" py-4">Apply for IPO</p>
+          </div>
+
+          <!-- Card 03 -->
+          <div class="w-[9.68rem] bg-[#66D6FF] p-1 flex flex-col items-center rounded cursor-pointer">
+            <div class="w-[9.0625rem] overflow-hidden rounded">
+              <img src="./New folder/invest-in-etfs.png" alt="invest-in-etfs"
+                class="hover:scale-110 transition-all duration-500">
+            </div>
+            <p class=" py-4">Invest in ETFs</p>
+          </div>
+
+          <!-- Card 04 -->
+          <div class="w-[9.68rem] bg-[#66D6FF] p-1 flex flex-col items-center rounded cursor-pointer">
+            <div class="w-[9.0625rem] overflow-hidden rounded">
+              <img src="./New folder/buy-gold.png" alt="buy-gold" class="hover:scale-110 transition-all duration-500">
+            </div>
+            <p class=" py-4">Buy Gold</p>
+          </div>
+
+          <!-- Card 05 -->
+          <div class="w-[9.68rem] bg-[#66D6FF] p-1 flex flex-col items-center rounded cursor-pointer">
+            <div class="w-[9.0625rem] overflow-hidden rounded">
+              <img src="./New folder/invest-in-mutual-funds.png" alt="invest-in-mutual-funds"
+                class="hover:scale-110 transition-all duration-500">
+            </div>
+            <p class=" text-center py-4">Invest in Mutual Funds</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Paytm Travel Section -->
+      <div class="flex justify-between flex-wrap max-w-screen-xl mx-auto sm:py-16 sm:pl-16  bg-white px-4 pb-12">
+        <div class="w-[12.5rem] flex flex-col justify-between">
+          <div class="w-[10rem]">
+            <img src="./New folder/paytm-travel.png" alt="paytm-travel">
+          </div>
+          <p class="pt-10 font-medium">
+            Best travel solutions with quick ticket bookings, great offers and easy refunds.
+          </p>
+          <a href="#" class="pt-5 font-bold text-[#66D6FF] hover:text-[#3fcafd] transition-all">Learn More</a>
+        </div>
+
+        <div class="flex justify-center flex-wrap gap-4 text-white font-bold pt-8 sm: pt:0">
+
+          <!-- Card 01 -->
+          <div
+            class="w-[9.68rem] bg-[#66D6FF] p-2 flex flex-col justify-center rounded hover:bg-[#3FC2ED] transition-all duration-500 cursor-pointer">
+            <div class="w-[4.5rem]">
+              <img src="./New folder/flight-tickets (1).png" alt="flight-tickets">
+            </div>
+            <p class="py-4">Flat 14% Cashback</p>
+            <p class="text-xs">With Code WELCOMEFLIGHT</p>
+          </div>
+
+          <!-- Card 02 -->
+          <div
+            class="w-[9.68rem] bg-[#66D6FF] p-2 flex flex-col justify-center rounded hover:bg-[#3FC2ED] transition-all duration-500 cursor-pointer">
+            <div class="w-[4.5rem]">
+              <img src="./New folder/refund-100-cancellation.png" alt="refund-100-cancellation">
+            </div>
+            <p class="py-4">100% Refund </p>
+            <p class="text-xs">With Paytm's Cancellation Protect</p>
+          </div>
+
+          <!-- Card 03 -->
+          <div
+            class="w-[9.68rem] bg-[#66D6FF] p-2 flex flex-col justify-center rounded hover:bg-[#3FC2ED] transition-all duration-500 cursor-pointer">
+            <div class="w-[4.5rem]">
+              <img src="./New folder/flat-cashback-bus.png" alt="flat-cashback-bus">
+            </div>
+            <p class="py-4">Sanitized Bus Options With TravelSafe+</p>
+          </div>
+
+          <!-- Card 04 -->
+          <div
+            class="w-[9.68rem] bg-[#66D6FF] p-2 flex flex-col justify-center rounded hover:bg-[#3FC2ED] transition-all duration-500 cursor-pointer">
+            <div class="w-[4.5rem]">
+              <img src="./New folder/sanitized-bus.png" alt="sanitized-bus">
+            </div>
+            <p class="py-4">Flat 10% Cashback</p>
+            <p class="text-xs">With Code HAPPYBUS</p>
+          </div>
+
+          <!-- Card 05 -->
+          <div
+            class="w-[9.68rem] bg-[#66D6FF] p-2 flex flex-col justify-center rounded hover:bg-[#3FC2ED] transition-all duration-500 cursor-pointer">
+            <div class="w-[4.5rem]">
+              <img src="./New folder/hussle-free-tain-ticket-bookings.png" alt="hussle-free-tain-ticket-bookings">
+            </div>
+            <p class="py-4">Hassle Free Train Ticket Bookings</p>
+            <p class="text-xs">Invest in Mutual Funds</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div></div>
+    </section>
+
+  </main>
+
+  <!-- *************************** -->
+  <!-- Footer Section -->
+  <!-- *************************** -->
+
+  <footer class="bg-[#F5F7FA] pt-24">
+
+    <div class="max-w-screen-xl mx-auto pb-10">
+
+      <!-- social icons and App section -->
+      <div class="flex flex-col gap-12 sm:flex-row sm:gap-0 justify-between pb-16 px-4">
+        <div class="flex gap-2 items-center">
+          <p class="text-xl font-semibold mr-[1rem]">
+            Download Paytm App <br> to Pay from anywhere
+          </p>
+
+          <div class="cursor-pointer"><img src="./New folder/apple-store.svg" alt="apple-store"></div>
+          <div class="cursor-pointer"><img src="./New folder/google-play.svg" alt="google-play"></div>
+
+        </div>
+        <div class="flex gap-5 justify-center items-center justify-self-end cursor-pointer">
+          <img src="./New folder/twitter-icon.svg" alt="twitter-icon" class="w-[1.56rem] h-[1.56rem]">
+          <img src="./New folder/instagram-icon.svg" alt="instagram-icon" class="w-[1.56rem] h-[1.56rem]">
+          <img src="./New folder/facebook-icon.svg" alt="facebook-icon" class="w-[1.56rem] h-[1.56rem]">
+        </div>
+      </div>
+      <hr class="bg-[#505050]">
+
+    </div>
+  </footer>
+
+  <!-- bottom Lines -->
+  <div class="bottom-lines"></div>
+
+</body>
+
+</html>
